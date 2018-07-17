@@ -2,7 +2,9 @@ const express = require('express')
 const router = express.Router()
 const crud = require('./helper/crud')
 
-router.post('/query',(req,res)=>{
+const validator = require('./middleware/validator')
+
+router.post('/query', validator.validateRequest, (req,res)=>{
     let method = req.body.method
     let params = req.body.params
     Object.keys(params).forEach((key) => {

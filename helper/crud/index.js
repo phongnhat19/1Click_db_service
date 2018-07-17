@@ -7,17 +7,16 @@ const logHelper = require('../logger')
 
 const defaultSort = {dateCreated:-1}
 
-crud.create = (data,next)=>{
+crud.create = (obj,next)=>{
     MongoClient.connect(dburl, function (err, client) {
         if (err) {
             logHelper.error(`DB SERVICE -  CONNECT DB ERROR`)
             logHelper.debug(err)
             next('ERROR',"DB ERROR");
-            client.close()
         }
         else {
             const db = client.db(config.dbName);
-            db.collection(obj.collection).insert(obj.condition,(err,result)=>{
+            db.collection(obj.collection).insert(obj.data,(err,result)=>{
                 if (err) {
                     logHelper.error(`DB SERVICE - CREATE ERROR`)
                     logHelper.debug(err)
@@ -39,7 +38,6 @@ crud.read = (obj,next)=>{
             logHelper.error(`DB SERVICE -  CONNECT DB ERROR`)
             logHelper.debug(err)
             next('ERROR',"DB ERROR");
-            client.close()
         }
         else {
             const db = client.db(config.dbName);
@@ -94,7 +92,6 @@ crud.update = (obj,next)=>{
             logHelper.error(`API SERVICE - KEY-VALUE HELPER - CONNECT DB ERROR`)
             logHelper.debug(err)
             next('ERROR',"DB ERROR");
-            client.close()
         }
         else {
         	const db = client.db(config.dbName);
