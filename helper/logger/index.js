@@ -1,4 +1,4 @@
-let 1ClickLogger = {}
+let logHelper = {}
 
 const addZero = (num) => {
 	if (num<10) {
@@ -9,19 +9,19 @@ const addZero = (num) => {
 	}
 }
 
-1ClickLogger.error = (message) => {
-	1ClickLogger.log('error',message)
+logHelper.error = (message) => {
+	logHelper.log('error',message)
 }
 
-1ClickLogger.info = (message) => {
-	1ClickLogger.log('info',message)
+logHelper.info = (message) => {
+	logHelper.log('info',message)
 }
 
-1ClickLogger.debug = (message) => {
-	1ClickLogger.log('debug',message)
+logHelper.debug = (message) => {
+	logHelper.log('debug',message)
 }
 
-1ClickLogger.log = (type,message)=> {
+logHelper.log = (type,message)=> {
 	const date = new Date()
 	const dateString = `${addZero(date.getDate())}/${addZero(date.getMonth()+1)}/${addZero(date.getFullYear())}`
 	const timeString = `${addZero(date.getHours())}:${addZero(date.getMinutes())}:${addZero(date.getSeconds())}`
@@ -31,4 +31,4 @@ const addZero = (num) => {
 	})
 }
 
-module.exports = 1ClickLogger
+module.exports = logHelper
