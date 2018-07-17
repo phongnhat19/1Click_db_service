@@ -37,4 +37,4 @@ app.get('*', (req, res) => res.send('DIRECT ACCESS NOT ALLOWED'))
 
 let port = process.env.PORT || 9998;
 
-http.listen(port, () => console.log(`1CLICK DB SERVICE ON PORT ${port}!`))
+app.listen(port, () => console.log(`1CLICK DB SERVICE ON PORT ${port}!`))
