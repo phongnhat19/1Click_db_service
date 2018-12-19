@@ -100,7 +100,7 @@ crud.update = (obj,next)=>{
                 condition._id = new ObjectID(condition._id)
             }
             let newData = obj.data
-            db.collection('Objects').findOneAndUpdate(condition,{$set:newData},{upsert:true,returnOriginal:false},function(err,result){
+            db.collection(obj.collection).findOneAndUpdate(condition,{$set:newData},{upsert:true,returnOriginal:false},function(err,result){
                 if (err) {
                     logHelper.error(`API SERVICE - KEY-VALUE HELPER - QUERY ERROR`)
                     logHelper.debug(err)
