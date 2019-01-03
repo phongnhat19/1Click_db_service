@@ -53,6 +53,9 @@ crud.read = (obj,next)=>{
             if (obj.limit) {
                 limit = obj.limit
             }
+            if (obj.condition._id) {
+                obj.condition._id = new ObjectID(obj.condition._id)
+            }
             let query = db.collection(obj.collection).find(obj.condition)
             query.count((err,count)=>{
                 if (err) {
